@@ -1,4 +1,4 @@
-FROM php:8.3-cli-bookworm AS php_vendor
+FROM php:8.4-cli-bookworm AS php_vendor
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
@@ -36,7 +36,7 @@ RUN npm ci
 RUN npm run build
 
 
-FROM php:8.3-cli-bookworm AS runtime
+FROM php:8.4-cli-bookworm AS runtime
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libonig-dev \

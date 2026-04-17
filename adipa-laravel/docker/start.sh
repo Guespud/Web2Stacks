@@ -9,6 +9,8 @@ mkdir -p \
   /app/storage/logs \
   /app/bootstrap/cache
 
+rm -f /app/bootstrap/cache/*.php
+
 php artisan optimize:clear
 php artisan package:discover --ansi
 php artisan config:cache
