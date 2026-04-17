@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libzip-dev \
     libonig-dev \
     libxml2-dev \
-    && docker-php-ext-install mbstring pdo xml zip \
+    && docker-php-ext-install fileinfo mbstring pdo xml zip \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
@@ -44,7 +44,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libzip-dev \
     unzip \
     zip \
-    && docker-php-ext-install mbstring pdo xml zip \
+    && docker-php-ext-install fileinfo mbstring pdo xml zip \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
