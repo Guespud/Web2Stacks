@@ -1,6 +1,7 @@
 const mix = require('laravel-mix');
 
-mix.js('resources/js/app.js', 'public/js')
+mix.setPublicPath('public')
+    .js('resources/js/app.js', 'public/js')
     .stylus('resources/stylus/app.styl', 'public/css')
     .options({
         processCssUrls: false,
