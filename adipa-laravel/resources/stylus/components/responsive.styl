@@ -1,0 +1,130 @@
+// Desktop: 1280px+
+@media (min-width: 1280px)
+  .catalog-suggestion__box
+    flex-direction row
+    align-items center
+    justify-content space-between
+
+  .catalog-suggestion__content
+    flex-direction row
+    align-items flex-start
+    gap 32px
+
+  .catalog-suggestion__cta
+    align-items flex-end
+
+// Tablet + mobile: ≤1279px
+// Grid drops to 2 columns and single-column layouts activate
+@media (max-width: 1279px)
+  .catalog-layout,
+  .checkout-layout,
+  .site-footer__grid,
+  .site-footer__groups,
+  .site-footer__contact-grid
+    display block
+
+  .filters-panel
+    display none
+
+  .catalog-results__grid
+    grid-template-columns repeat(2, minmax(0, 1fr))
+
+  .checkout-summary
+    width 100%
+    margin-top 24px
+
+// The desktop header needs ~900px to breathe (search min-width + nav + account).
+// Below 1024px we swap to the mobile header regardless of the tablet spec.
+@media (max-width: 1024px)
+  .site-header__desktop
+    display none
+
+  .site-header__mobile
+    display flex
+    min-height 68px
+    align-items center
+    justify-content space-between
+    padding 0 24px
+
+  .app-main
+    padding-top 72px
+
+// Mobile: ≤767px
+@media (max-width: 767px)
+  .container
+    padding 0 16px
+
+  .site-footer__grid
+    padding-top 72px
+    padding-bottom 56px
+
+  .site-footer__content > .site-footer__contact-grid
+    margin-top 24px
+
+  .site-footer__newsletter
+    margin-top 24px
+
+  .site-footer__bottom
+    margin-top 24px
+    padding-bottom 56px
+
+  .catalog-hero__content
+    padding-top 56px
+    padding-bottom 64px
+
+  .catalog-hero h1
+    font-size 34px
+
+  .catalog-results__toolbar
+    display block
+
+  .catalog-results__sorting
+    margin-top 12px
+
+  .catalog-results__grid
+    grid-template-columns 1fr
+
+  .course-card__meta,
+  .checkout-item,
+  .checkout-success__actions
+    display block
+
+  .checkout-item__thumb
+    width 100%
+    margin-bottom 16px
+
+  .catalog-cta
+    padding-top 20px
+    padding-bottom 32px
+
+  .catalog-suggestion
+    padding-bottom 40px
+
+  .catalog-suggestion__box
+    padding 28px 24px
+
+  .catalog-suggestion__cta button
+    margin-top 4px
+    width 100%
+
+  .catalog-faq
+    padding-bottom 56px
+
+  .faq-item__toggle,
+  .faq-item__body
+    padding-left 20px
+    padding-right 20px
+
+  .faq-item__toggle
+    padding-top 22px
+    padding-bottom 22px
+
+  .faq-item__toggle span:first-child
+    font-size 18px
+
+  .faq-item__toggle span:last-child
+    width 32px
+    min-width 32px
+    height 32px
+    line-height 32px
+    font-size 18px

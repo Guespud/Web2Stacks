@@ -1,0 +1,439 @@
+.mobile-drawer,
+.cart-drawer
+  position fixed
+  inset 0
+  z-index 90
+  opacity 0
+  pointer-events none
+  transition opacity .22s ease
+
+.mobile-drawer.is-open,
+.cart-drawer.is-open
+  opacity 1
+  pointer-events auto
+
+.mobile-drawer
+  background rgba(47,47,47,.9)
+
+.mobile-drawer__rail
+  position absolute
+  top 0
+  left 0
+  width 42px
+  height 100%
+  background #9a9a9a
+  display flex
+  flex-direction column
+  align-items center
+  overflow hidden
+
+.mobile-drawer__hamburger,
+.mobile-drawer__close
+  border 0
+  background transparent
+  color #5d3df1
+  cursor pointer
+
+.mobile-drawer__hamburger
+  width 42px
+  height 60px
+  display flex
+  flex-direction column
+  justify-content center
+  align-items center
+
+.mobile-drawer__hamburger span
+  display block
+  width 20px
+  height 2.5px
+  background currentColor
+  border-radius 999px
+  margin-bottom 3px
+
+.mobile-drawer__hamburger span:last-child
+  margin-bottom 0
+
+.mobile-drawer__fill
+  width 100%
+  flex 1
+  background linear-gradient(180deg,#4d34b8 0%,#3d2697 100%)
+
+.mobile-drawer__panel
+  position absolute
+  top 0
+  left 72px
+  width 320px
+  max-width calc(100vw - 72px)
+  height 100vh
+  display flex
+  flex-direction column
+  background white
+  box-shadow 18px 0 40px rgba(0,0,0,.14)
+  overflow hidden
+
+.mobile-drawer__header
+  position relative
+  display flex
+  align-items flex-start
+  justify-content space-between
+  gap 16px
+  padding 18px 12px 14px
+  border-bottom 1px solid $border
+
+.mobile-drawer__eyebrow
+  display block
+  margin-bottom 8px
+  color #8b86a6
+  font-size 11px
+  font-weight 800
+  text-transform uppercase
+  letter-spacing .18em
+  line-height 1
+
+.mobile-drawer__brand
+  display inline-flex
+  align-items center
+
+.mobile-drawer__brand img
+  width 136px
+
+.mobile-drawer__close
+  width 38px
+  height 38px
+  min-width 38px
+  border 1px solid #ddd6fb
+  border-radius 999px
+  color #7652ff
+  font-size 28px
+  font-weight 300
+  line-height 1
+  display inline-flex
+  align-items center
+  justify-content center
+
+.mobile-drawer__nav-shell
+  flex 1
+  min-height 0
+  padding 14px 12px 0
+  overflow-y auto
+
+.mobile-drawer__nav
+  border 1px solid #e6e2f7
+  border-radius 16px
+  overflow hidden
+  background white
+
+.mobile-drawer__item
+  width 100%
+  min-height 64px
+  display flex
+  align-items center
+  justify-content space-between
+  gap 10px
+  padding 0 14px
+  border 0
+  border-bottom 1px solid $border
+  background white
+  color $ink
+  font-size 15px
+  text-align left
+
+.mobile-drawer__item:last-child
+  border-bottom 0
+
+.mobile-drawer__item .is-strong,
+.mobile-drawer__item > span:first-child
+  font-weight 800
+  line-height 1.15
+
+.mobile-drawer__item-meta
+  display inline-flex
+  align-items center
+  gap 10px
+  color #b0acc5
+
+.mobile-drawer__item-chevron
+  font-size 22px
+  line-height 1
+
+.mobile-drawer__badge
+  display inline-flex
+  align-items center
+  justify-content center
+  min-width 64px
+  height 24px
+  padding 0 10px
+  border-radius 999px
+  background #ff4b92
+  color white
+  font-size 10px
+  font-weight 800
+  text-transform uppercase
+  letter-spacing .06em
+
+.mobile-drawer__badge.is-free
+  background $brand
+
+.mobile-drawer__footer
+  padding 12px 12px 14px
+  border-top 1px solid #ece9f5
+  background white
+
+.mobile-drawer__auth
+  display grid
+  grid-template-columns 1fr 1fr
+  gap 10px
+  align-items stretch
+
+.mobile-drawer__login,
+.mobile-drawer__register
+  width 100%
+  min-width 0
+  height 42px
+  border-radius 14px
+  font-size 13px
+  font-weight 700
+  white-space nowrap
+  padding 0 12px
+
+.mobile-drawer__login
+  border 0
+  background linear-gradient(90deg,#6d44f7 0%,#7a52ff 100%)
+  color white
+  box-shadow 0 14px 26px rgba(109,68,247,.24)
+
+.mobile-drawer__register
+  border 1px solid #dcd4fb
+  background white
+  color $brand
+
+.mobile-drawer__contact
+  margin-top 14px
+  display flex
+  align-items center
+  justify-content space-between
+  gap 12px
+  border 1px solid #e7e3f7
+  border-radius 16px
+  background #fbfaff
+  padding 12px 16px
+
+.mobile-drawer__contact-copy span
+  display block
+  margin-bottom 5px
+  color #8b86a6
+  font-size 11px
+  font-weight 800
+  text-transform uppercase
+  letter-spacing .16em
+
+.mobile-drawer__contact-copy strong
+  display block
+  color #27223f
+  font-size 14px
+  font-weight 700
+  line-height 1.2
+
+.mobile-drawer__whatsapp
+  width 42px
+  height 42px
+  min-width 42px
+  border 0
+  border-radius 50%
+  background #3cc54a
+  display inline-flex
+  align-items center
+  justify-content center
+  box-shadow 0 10px 20px rgba(60,197,74,.22)
+
+.mobile-drawer__whatsapp img
+  width 20px
+
+.cart-drawer
+  background rgba(47,47,47,.45)
+
+.cart-drawer__panel
+  position absolute
+  right 0
+  top 0
+  width 100%
+  max-width 364px
+  height 100%
+  display flex
+  flex-direction column
+  background white
+  box-shadow -20px 0 50px rgba(0,0,0,.18)
+  transform translateX(100%)
+  transition transform .22s ease
+
+.cart-drawer.is-open .cart-drawer__panel
+  transform translateX(0)
+
+.cart-drawer__header,
+.cart-drawer__footer
+  padding 20px 20px
+  border-color $border
+
+.cart-drawer__header
+  border-bottom 1px solid $border
+  display flex
+  justify-content space-between
+  align-items flex-start
+
+.cart-drawer__header h2
+  margin 0
+  font-size 20px
+  font-weight 800
+  line-height 1.1
+  color #27223f
+
+.cart-drawer__header p
+  margin 7px 0 0
+  font-size 12px
+  font-weight 600
+  line-height 1.2
+  color #7b7697
+
+.cart-drawer__close
+  border 0
+  background transparent
+  color #7652ff
+  font-size 32px
+  font-weight 300
+  line-height 1
+  padding 0
+
+.cart-drawer__body
+  flex 1
+  overflow-y auto
+  padding 18px 20px
+
+.cart-drawer__empty
+  border 1px dashed #d8d2f4
+  background #faf8ff
+  border-radius 10px
+  padding 32px 20px
+  text-align center
+  color #7b7697
+  font-size 14px
+
+.cart-item
+  display flex
+  gap 16px
+  border 1px solid $border
+  border-radius 12px
+  padding 11px
+  margin-bottom 14px
+
+.cart-item__thumb
+  width 84px
+  min-width 84px
+  height 70px
+  border-radius 8px
+  background linear-gradient(135deg,#ddd2ff 0%,#d4c6ff 55%,#c9bbff 100%)
+  display flex
+  align-items center
+  justify-content center
+  padding 10px
+
+.cart-item__thumb img
+  width 62px
+
+.cart-item__content h3
+  margin 0
+  font-size 14px
+  font-weight 800
+  line-height 1.25
+  color #27223f
+  display -webkit-box
+  -webkit-line-clamp 3
+  -webkit-box-orient vertical
+  overflow hidden
+
+.cart-item__content strong
+  display block
+  margin-top 10px
+  font-size 15px
+  font-weight 900
+  color #27223f
+
+.cart-item__content button
+  margin-top 12px
+  border 0
+  background transparent
+  color $brand
+  font-size 12px
+  font-weight 700
+  padding 0
+
+.cart-drawer__summary
+  border 1px solid $border
+  border-radius 12px
+  background #faf8ff
+  padding 14px 14px
+  margin-bottom 16px
+
+.cart-drawer__summary div
+  display flex
+  justify-content space-between
+  font-size 13px
+  color $muted
+  margin-bottom 10px
+  align-items center
+
+.cart-drawer__summary .is-total
+  margin-top 12px
+  padding-top 12px
+  border-top 1px solid $border
+  color $ink
+
+.cart-drawer__summary .is-total span
+  font-size 13px
+  font-weight 700
+
+.cart-drawer__summary .is-total strong
+  font-size 22px
+  font-weight 900
+  letter-spacing -.03em
+
+.cart-drawer__summary strong
+  color $ink
+  font-weight 600
+
+.cart-drawer__checkout
+  display flex
+  align-items center
+  justify-content center
+  height 42px
+  border-radius 8px
+  background linear-gradient(90deg,#6d44f7 0%,#7a52ff 100%)
+  color white
+  font-size 15px
+  font-weight 600
+
+.cart-drawer__checkout.is-disabled
+  pointer-events none
+  opacity .55
+
+@media (max-width: 420px)
+  .mobile-drawer__rail
+    width 56px
+
+  .mobile-drawer__panel
+    left 56px
+    width calc(100vw - 56px)
+    max-width calc(100vw - 56px)
+    height 100vh
+
+  .mobile-drawer__header
+    padding 18px 14px 12px
+
+  .mobile-drawer__nav-shell,
+  .mobile-drawer__footer
+    padding-left 14px
+    padding-right 14px
+
+  .mobile-drawer__item
+    min-height 64px
+    font-size 15px
+

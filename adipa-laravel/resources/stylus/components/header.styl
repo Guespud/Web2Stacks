@@ -1,0 +1,206 @@
+.site-header
+  position fixed
+  inset 0 0 auto 0
+  z-index 40
+  background white
+  border-bottom 1px solid $brand
+
+.site-header__topbar
+  height 4px
+  background #1b1b1b
+
+.site-header__main-row
+  min-height 72px
+  display flex
+  align-items center
+  gap 32px
+  padding 12px 0
+
+.site-header__brand
+  line-height 0
+  flex-shrink 0
+
+.site-header__brand img
+  width 130px
+
+.site-header__search
+  display flex
+  flex 1
+  min-width 420px
+  height 38px
+  overflow hidden
+  border 1px solid $brand-blue
+  border-radius 4px
+  background white
+
+.site-header__search input
+  flex 1
+  border 0
+  outline 0
+  padding 0 16px
+  font-size 14px
+  color #53506a
+
+.site-header__search input::placeholder
+  color #a19db5
+
+.site-header__search button
+  width 48px
+  border 0
+  background $brand-blue
+  color white
+  cursor pointer
+  font-size 20px
+  line-height 1
+
+.site-header__account
+  display flex
+  flex-shrink 0
+  align-items center
+  gap 24px
+  font-size 15px
+  color $ink
+
+.site-header__account-link
+  font-weight 600
+  cursor pointer
+
+.site-header__register-group
+  display flex
+  align-items center
+  gap 8px
+
+.site-header__register-link
+  font-weight 500
+  color #4e4a68
+  cursor pointer
+
+.site-header__cart-button
+  position relative
+  display flex
+  width 32px
+  height 32px
+  align-items center
+  justify-content center
+  border 0
+  background transparent
+  cursor pointer
+
+.site-header__cart-button img
+  width 28px
+
+.site-header__cart-badge
+  position absolute
+  right -4px
+  top -4px
+  min-width 16px
+  padding 0 4px
+  line-height 16px
+  border-radius 999px
+  background #fff
+  color #6f49ff
+  font-size 10px
+  font-weight 700
+  text-align center
+
+.site-header__nav-row
+  min-height 44px
+  display flex
+  align-items center
+  justify-content space-between
+  gap 32px
+  padding 4px 0
+
+.site-header__discover
+  display flex
+  flex-shrink 0
+  align-items center
+  gap 8px
+  border 0
+  background transparent
+  color #53506a
+  font-size 14px
+  font-weight 500
+  cursor pointer
+
+.site-header__discover img
+  width 16px
+
+.site-header__nav
+  display flex
+  flex-wrap wrap
+  justify-content flex-end
+  align-items flex-end
+  gap 24px
+  font-size 15px
+  font-weight 500
+  color #5b566f
+
+.site-header__nav-item
+  position relative
+  display flex
+  align-items center
+  gap 4px
+  color inherit
+
+.site-header__nav-item.is-active,
+.site-header__nav-item.is-bold
+  color $ink
+  font-weight 800
+
+.site-header__chevron
+  font-size 10px
+  color inherit
+
+.site-header__badge
+  position absolute
+  top -14px
+  left 50%
+  transform translateX(-50%)
+  border-radius 3px
+  padding 1px 6px
+  background #ff2f7d
+  color white
+  font-size 8px
+  font-weight 800
+  text-transform uppercase
+  letter-spacing .06em
+
+.site-header__badge.is-free
+  background $brand
+
+.site-header__mobile
+  display none
+
+.site-header__mobile-actions
+  display flex
+  align-items center
+  gap 16px
+
+.site-header__search-bubble
+  width 32px
+  height 32px
+  border 0
+  border-radius 50%
+  background $brand-blue
+  color white
+  font-size 17px
+  line-height 1
+  cursor pointer
+
+.site-header__hamburger
+  border 0
+  background transparent
+  color $brand
+  cursor pointer
+
+.site-header__hamburger span
+  display block
+  width 30px
+  height 3px
+  background currentColor
+  margin-bottom 4px
+  border-radius 999px
+
+.site-header__hamburger span:last-child
+  margin-bottom 0

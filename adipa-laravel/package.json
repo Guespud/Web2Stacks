@@ -1,0 +1,14 @@
+{
+    "private": true,
+    "scripts": {
+        "dev": "mix watch",
+        "build": "mix --production",
+        "postinstall": "node scripts/patch-mix.js"
+    },
+    "devDependencies": {
+        "jquery": "^3.7.1",
+        "laravel-mix": "^6.0.49",
+        "stylus": "^0.64.0",
+        "stylus-loader": "^8.1.2"
+    }
+}
