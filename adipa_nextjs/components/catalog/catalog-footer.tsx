@@ -10,6 +10,7 @@ import {
   type FooterLink,
 } from "@/lib/footer-data";
 
+
 type FooterLinkGroupProps = {
   links: FooterLink[];
   title: string;
@@ -82,7 +83,7 @@ function FooterLinkGroup({ links, title }: FooterLinkGroupProps) {
       <h3 className="text-[12px] font-extrabold uppercase tracking-[0.12em] text-[#a8afe6]">
         {title}
       </h3>
-      <div className="mt-4 space-y-2">
+      <div className="mt-4">
         {links.map((link) => (
           <Link
             key={link.label}
@@ -101,7 +102,7 @@ function FooterLinkGroup({ links, title }: FooterLinkGroupProps) {
 export function CatalogFooter() {
   return (
     <footer className="bg-[#474b69] text-white">
-      <section className="mx-auto w-full max-w-[1280px] px-4 pb-8 pt-10 xl:px-6 xl:pb-10 xl:pt-12">
+      <section className="mx-auto w-full max-w-[1280px] px-4 pb-10 pt-10 xl:px-6 xl:pb-10 xl:pt-14">
         <div className="grid gap-6 xl:grid-cols-[280px_minmax(0,1fr)_300px] xl:gap-8">
           <div className="rounded-[18px] border border-white/8 bg-white/[0.03] p-5 md:p-6">
             <Image
@@ -116,7 +117,7 @@ export function CatalogFooter() {
               Estamos presentes en:
             </p>
 
-            <div className="mt-4 space-y-2">
+            <div className="mt-4">
               {footerCountries.map((country) => (
                 <Link
                   key={country.label}
@@ -124,22 +125,14 @@ export function CatalogFooter() {
                   href={country.href}
                   target="_blank"
                 >
-                  <span className="text-[18px]">
-                    {country.label === "Chile"
-                      ? "🇨🇱"
-                      : country.label === "México"
-                        ? "🇲🇽"
-                        : country.label === "Colombia"
-                          ? "🇨🇴"
-                          : "🌐"}
-                  </span>
+                  <span className="text-[18px]">{country.flag}</span>
                   <span>{country.label}</span>
                 </Link>
               ))}
             </div>
           </div>
 
-          <div className="space-y-5 md:space-y-6">
+          <div className="space-y-6">
             <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
               {footerLinkGroups.map((group) => (
                 <FooterLinkGroup
@@ -166,7 +159,7 @@ export function CatalogFooter() {
                 <h3 className="text-[12px] font-extrabold uppercase tracking-[0.12em] text-[#a8afe6]">
                   Enlaces útiles
                 </h3>
-                <div className="mt-4 space-y-2">
+                <div className="mt-4">
                   {footerUtilityLinks.map((link) => (
                     <Link
                       key={link.label}
@@ -223,7 +216,7 @@ export function CatalogFooter() {
             </div>
 
             <button
-              className="mt-5 inline-flex h-10 w-full items-center justify-center rounded-[8px] bg-[#78cafd] px-6 text-[14px] font-bold text-white transition hover:brightness-105 xl:w-auto"
+              className="mt-5 inline-flex h-10 items-center justify-center rounded-[8px] bg-[#78cafd] px-6 text-[14px] font-bold text-white transition hover:brightness-105"
               type="button"
             >
               Enviar
@@ -235,7 +228,7 @@ export function CatalogFooter() {
           </aside>
         </div>
 
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3 border-t border-white/10 pt-6 xl:justify-end xl:gap-4">
+        <div className="mt-8 flex flex-wrap items-center justify-end gap-4 border-t border-white/10 pb-10 pt-6">
           {footerSocialLinks.map((link) => (
             <Link
               key={link.label}

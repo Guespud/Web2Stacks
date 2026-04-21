@@ -2,29 +2,31 @@
 
 @section('content')
 <section class="catalog-hero">
-    <div class="catalog-hero__bg">
-        <div class="catalog-hero__polygon" aria-hidden="true"></div>
-        <div class="catalog-hero__bar1" aria-hidden="true"></div>
-        <div class="catalog-hero__bar2" aria-hidden="true"></div>
-    </div>
-    <div class="container catalog-hero__content">
-        <h1>Cursos de Psicología con Certificado en 2026</h1>
-        <p>Vive la mejor experiencia de aprendizaje y potencia tus conocimientos a través de nuestros cursos y diplomados</p>
-        <div class="catalog-hero__search js-hero-search">
-            <span class="catalog-hero__cursor" aria-hidden="true"></span>
-            <input class="js-search-input" type="search" placeholder="Buscar" aria-label="Buscar por temática">
-            <button type="button" aria-label="Buscar">
-                <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                    <circle cx="9" cy="9" r="5.5" stroke="currentColor" stroke-width="2"></circle>
-                    <path d="M13.5 13.5L17 17" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
-                </svg>
-            </button>
-        </div>
-        <div class="catalog-hero__tags">
-            <span>Buscar:</span>
-            @foreach ($featuredTags as $tag)
-                <button class="js-tag-filter" data-tag="{{ $tag }}" type="button">{{ $tag }}</button>
-            @endforeach
+    <div class="catalog-hero__content">
+        <div class="catalog-hero__inner">
+            <div class="catalog-hero__copy">
+                <h1>Cursos de Psicología con Certificado en 2026</h1>
+                <p>Vive la mejor experiencia de aprendizaje y potencia tus conocimientos a través de nuestros cursos y diplomados</p>
+            </div>
+            <div class="catalog-hero__search-shell">
+                <div class="catalog-hero__search js-hero-search">
+                    <span class="catalog-hero__cursor" aria-hidden="true"></span>
+                    <input class="js-search-input" type="search" placeholder="Buscar" aria-label="Buscar por temática">
+                    <button type="button" aria-label="Buscar">
+                        <svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                            <path d="M8.5 2a6.5 6.5 0 1 1 0 13 6.5 6.5 0 0 1 0-13Zm0-2a8.5 8.5 0 1 0 5.33 15.12l4.02 4.02a1 1 0 0 0 1.42-1.42l-4.02-4.02A8.5 8.5 0 0 0 8.5 0Z"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="catalog-hero__tags">
+                    <p>Buscar:</p>
+                    <div class="catalog-hero__tags-list">
+                        @foreach ($featuredTags as $tag)
+                            <button class="js-tag-filter" data-tag="{{ $tag }}" type="button">{{ $tag }}</button>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -37,13 +39,29 @@
             @endforeach
         </div>
         <div class="filters-panel__head">
-            <span>Filtros</span>
+            <h3>Filtros</h3>
         </div>
-        @foreach (array_slice($filterGroups, 1) as $group)
+        @php
+            $areaGroup = collect($filterGroups)->firstWhere('title', 'Área temática');
+            $programGroup = collect($filterGroups)->firstWhere('title', 'Tipo de programa');
+            $modeGroup = collect($filterGroups)->firstWhere('title', 'Modalidad');
+            $categoryGroup = collect($filterGroups)->firstWhere('title', 'Categoría');
+            $orderedGroups = array_filter([
+                $areaGroup,
+                $programGroup,
+                $modeGroup,
+            ]);
+        @endphp
+
+        @foreach ($orderedGroups as $group)
             <section class="filter-section js-filter-section" data-filter-title="{{ $group['title'] }}">
                 <button class="filter-section__toggle js-filter-toggle" type="button">
                     <span>{{ $group['title'] }}</span>
-                    <span class="filter-section__chevron">⌄</span>
+                    <span class="filter-section__chevron-wrap">
+                        <svg aria-hidden="true" fill="none" height="16" viewBox="0 0 16 16" width="16">
+                            <path d="M3 6l5 5 5-5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                        </svg>
+                    </span>
                 </button>
                 <div class="filter-section__body">
                     @if (in_array($group['title'], ['Área temática', 'Tipo de programa', 'Modalidad', 'Categoría']))
@@ -64,7 +82,7 @@
         @endforeach
 
         <section class="filter-section js-filter-section" data-filter-title="Rango de Precio">
-            <button class="filter-section__toggle js-filter-toggle" type="button"><span>Rango de Precio</span><span class="filter-section__chevron">⌄</span></button>
+            <button class="filter-section__toggle js-filter-toggle" type="button"><span>Rango de Precio</span><span class="filter-section__chevron-wrap"><svg aria-hidden="true" fill="none" height="16" viewBox="0 0 16 16" width="16"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></span></button>
             <div class="filter-section__body is-range">
                 <div class="range-values"><span class="js-price-min-label">$0</span><span>-</span><span class="js-price-max-label">$2.200.000</span></div>
                 <input class="js-price-min" type="range" min="0" max="2200000" step="10000" value="0">
@@ -72,7 +90,7 @@
             </div>
         </section>
         <section class="filter-section js-filter-section" data-filter-title="Rango de Horas">
-            <button class="filter-section__toggle js-filter-toggle" type="button"><span>Rango de Horas</span><span class="filter-section__chevron">⌄</span></button>
+            <button class="filter-section__toggle js-filter-toggle" type="button"><span>Rango de Horas</span><span class="filter-section__chevron-wrap"><svg aria-hidden="true" fill="none" height="16" viewBox="0 0 16 16" width="16"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></span></button>
             <div class="filter-section__body is-range">
                 <div class="range-values"><span class="js-hours-min-label">8</span><span>-</span><span class="js-hours-max-label">350</span></div>
                 <input class="js-hours-min" type="range" min="8" max="350" step="1" value="8">
@@ -80,13 +98,38 @@
             </div>
         </section>
         <section class="filter-section js-filter-section" data-filter-title="Rango de Descuentos">
-            <button class="filter-section__toggle js-filter-toggle" type="button"><span>Rango de Descuentos</span><span class="filter-section__chevron">⌄</span></button>
+            <button class="filter-section__toggle js-filter-toggle" type="button"><span>Rango de Descuentos</span><span class="filter-section__chevron-wrap"><svg aria-hidden="true" fill="none" height="16" viewBox="0 0 16 16" width="16"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></span></button>
             <div class="filter-section__body is-range">
                 <div class="range-values"><span class="js-discount-min-label">0</span><span>-</span><span class="js-discount-max-label">100</span></div>
                 <input class="js-discount-min" type="range" min="0" max="100" step="1" value="0">
                 <input class="js-discount-max" type="range" min="0" max="100" step="1" value="100">
             </div>
         </section>
+        @if ($categoryGroup)
+            <section class="filter-section js-filter-section" data-filter-title="{{ $categoryGroup['title'] }}">
+                <button class="filter-section__toggle js-filter-toggle" type="button">
+                    <span>{{ $categoryGroup['title'] }}</span>
+                    <span class="filter-section__chevron-wrap">
+                        <svg aria-hidden="true" fill="none" height="16" viewBox="0 0 16 16" width="16">
+                            <path d="M3 6l5 5 5-5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                        </svg>
+                    </span>
+                </button>
+                <div class="filter-section__body">
+                    @foreach ($categoryGroup['options'] as $option)
+                        <label>
+                            <input
+                                type="checkbox"
+                                class="js-filter-checkbox"
+                                data-group="{{ $categoryGroup['title'] }}"
+                                value="{{ $option }}"
+                            >
+                            <span>{{ $option }}</span>
+                        </label>
+                    @endforeach
+                </div>
+            </section>
+        @endif
 
         <button class="filters-panel__clear js-clear-filters" type="button">Borrar filtros</button>
     </aside>
@@ -119,7 +162,14 @@
 
 <section class="catalog-cta container">
     <div class="catalog-cta__box">
-        <span class="catalog-cta__box-letter" aria-hidden="true">A</span>
+        <div class="catalog-cta__bg" aria-hidden="true">
+            <div class="catalog-cta__bg-a">
+                <div class="catalog-cta__bg-a-left"></div>
+                <div class="catalog-cta__bg-a-right"></div>
+                <div class="catalog-cta__bg-a-crossbar"></div>
+                <div class="catalog-cta__bg-a-stem"></div>
+            </div>
+        </div>
         <div class="catalog-cta__box-content">
             <span>Cursos</span>
             <h2>Domina tu conocimiento con nuestro programas certificados de ADIPA</h2>
@@ -140,7 +190,7 @@
                 </div>
                 <div>
                     <span class="catalog-suggestion__label">Sugerencias</span>
-                    <h3>¿Tienes una idea para un nuevo <br> curso?</h3>
+                    <h3>¿Tienes una idea para un nuevo curso?</h3>
                 </div>
             </div>
             <p>En ADIPA valoramos tus sugerencias. Ayúdanos a crear el contenido que te gustaría aprender. Si tienes una propuesta para un curso que te gustaría ver en nuestra plataforma, compártela con nosotros y contribuye a nuestra comunidad de aprendizaje.</p>
@@ -162,7 +212,11 @@
             <article class="faq-item {{ $index === 0 ? 'is-open' : '' }}">
                 <button class="faq-item__toggle js-faq-toggle" type="button">
                     <span>{{ $item['question'] }}</span>
-                    <span>{{ $index === 0 ? '−' : '+' }}</span>
+                    <span class="faq-item__icon {{ $index === 0 ? 'is-open' : '' }}" aria-hidden="true">
+                        <svg fill="none" height="14" viewBox="0 0 14 14" width="14">
+                            <path d="M7 2.25v9.5M2.25 7h9.5" stroke="currentColor" stroke-linecap="round" stroke-width="1.6"></path>
+                        </svg>
+                    </span>
                 </button>
                 <div class="faq-item__body" @if($index !== 0) style="display:none" @endif>
                     <p>{{ $item['answer'] }}</p>

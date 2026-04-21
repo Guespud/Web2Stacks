@@ -20,7 +20,10 @@ class PageData
             'courses' => $this->catalog->courses(),
             'featuredTags' => $this->catalog->featuredTags(),
             'filterGroups' => $this->catalog->filterGroups(),
-            'headerNav' => $this->catalog->headerNav(),
+            'headerNavDesktop' => $this->catalog->headerNavDesktop(),
+            'headerNavMobile' => $this->catalog->headerNavMobile(),
+            'recursosSubItems' => $this->catalog->recursosSubItems(),
+            'descubreAdipaItems' => $this->catalog->descubreAdipaItems(),
             'footerData' => $this->catalog->footer(),
             'faqItems' => $this->catalog->faqItems(),
             'catalogBounds' => [

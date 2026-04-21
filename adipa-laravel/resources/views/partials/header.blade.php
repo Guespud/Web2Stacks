@@ -1,114 +1,217 @@
 <header class="site-header js-site-header">
-    <div class="site-header__topbar"></div>
     <div class="site-header__desktop container">
         <div class="site-header__main-row">
-            <a class="site-header__brand" href="{{ route('catalog.index') }}">
-                <img alt="ADIPA Colombia" src="{{ asset('assets/logo-colombia.webp') }}">
+            <a class="site-header__brand" href="https://adipa.co">
+                <img alt="ADIPA" src="{{ asset('assets/logo-colombia.webp') }}">
             </a>
 
-            <div class="site-header__search">
-                <input type="search" placeholder="¿Qué quieres aprender?">
-                <button type="button" aria-label="Buscar">⌕</button>
+            <div class="site-header__search-wrap">
+                <form action="https://adipa.co" class="site-header__search-form">
+                    <div class="site-header__search">
+                        <input autocomplete="off" id="header-search" name="s" placeholder="¿Qué quieres aprender?" type="text">
+                        <button aria-label="Buscar" type="submit">
+                            <img alt="" aria-hidden="true" src="{{ asset('assets/icon-search-menu.png') }}">
+                        </button>
+                    </div>
+                </form>
             </div>
 
             <div class="site-header__account">
-                <span class="site-header__account-link">Iniciar Sesión</span>
-                <div class="site-header__register-group">
-                    <span class="site-header__register-link">Regístrate</span>
-                    <button class="site-header__cart-button js-open-cart" type="button" aria-label="Carrito">
-                        <img alt="" aria-hidden="true" src="{{ asset('assets/icon-main-cart.png') }}">
-                        <span class="site-header__cart-badge js-cart-count {{ $cartSummary['count'] ? '' : 'is-hidden' }}">{{ $cartSummary['count'] }}</span>
-                    </button>
-                </div>
+                <a class="site-header__account-link" href="https://adipa.co/sesion/" rel="nofollow">Iniciar Sesión</a>
+                <a class="site-header__register-link" href="https://adipa.co/registro/" rel="nofollow">Regístrate</a>
+                <button aria-label="Buscar" class="site-header__icon-button" type="button">
+                    <img alt="" aria-hidden="true" src="{{ asset('assets/icon-search-menu.png') }}">
+                </button>
+                <button aria-label="Carrito" class="site-header__cart-button js-open-cart" type="button">
+                    <img alt="" aria-hidden="true" src="{{ asset('assets/icon-main-cart.png') }}">
+                    <span class="site-header__cart-badge js-cart-count {{ $cartSummary['count'] ? '' : 'is-hidden' }}">{{ $cartSummary['count'] }}</span>
+                </button>
             </div>
         </div>
 
         <div class="site-header__nav-row">
-            <button class="site-header__discover" type="button">
-                <img alt="" aria-hidden="true" src="{{ asset('assets/icons-whatsapp.svg') }}">
-                <span>Descubre ADIPA</span>
-                <span class="site-header__chevron">▼</span>
-            </button>
+            <div class="site-header__nav-left">
+                <a
+                    class="site-header__whatsapp"
+                    href="https://api.whatsapp.com/send?phone=+573144718655&text=Hola, me quiero contactar desde ADIPA"
+                    rel="nofollow noreferrer"
+                    target="_blank"
+                    title="Whatsapp Adipa"
+                >
+                    <img alt="Teléfono" src="{{ asset('assets/icons-whatsapp.svg') }}">
+                </a>
+
+                <div class="site-header__dropdown site-header__dropdown--discover">
+                    <button class="site-header__dropdown-trigger" type="button">
+                        <span>Descubre ADIPA</span>
+                        <span class="site-header__chevron">▼</span>
+                    </button>
+                    <div class="site-header__dropdown-menu">
+                        @foreach ($descubreAdipaItems as $item)
+                            @if (!empty($item['children']))
+                                <div class="site-header__submenu">
+                                    <button class="site-header__submenu-trigger" type="button">
+                                        <span>{{ $item['label'] }}</span>
+                                        <span class="site-header__submenu-chevron">›</span>
+                                    </button>
+                                    <div class="site-header__submenu-menu">
+                                        @foreach ($item['children'] as $child)
+                                            <a class="site-header__dropdown-link" href="{{ $child['href'] }}">{{ $child['label'] }}</a>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            @else
+                                <a class="site-header__dropdown-link" href="{{ $item['href'] }}">{{ $item['label'] }}</a>
+                            @endif
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+
             <nav class="site-header__nav">
-                @foreach ($headerNav as $item)
-                    <a class="site-header__nav-item {{ !empty($item['active']) ? 'is-active' : '' }} {{ !empty($item['bold']) ? 'is-bold' : '' }}" href="{{ route('catalog.index') }}">
-                        @if (!empty($item['badge']))
-                            <span class="site-header__badge {{ $item['badge'] === 'Gratis' ? 'is-free' : '' }}">{{ $item['badge'] }}</span>
-                        @endif
-                        <span>{{ $item['label'] }}</span>
-                        @if (!empty($item['chevron']))<span class="site-header__chevron">▼</span>@endif
-                    </a>
+                @foreach ($headerNavDesktop as $item)
+                    @if ($item['label'] === 'Recursos')
+                        <div class="site-header__dropdown site-header__dropdown--resources">
+                            <button class="site-header__nav-item site-header__dropdown-trigger {{ !empty($item['active']) ? 'is-active' : '' }} {{ !empty($item['bold']) ? 'is-bold' : '' }}" type="button">
+                                @if (!empty($item['badge']))
+                                    <span class="site-header__badge {{ $item['badge'] === 'Gratis' ? 'is-free' : '' }}">{{ $item['badge'] }}</span>
+                                @endif
+                                <span>{{ $item['label'] }}</span>
+                                <span class="site-header__chevron">▼</span>
+                            </button>
+                            <div class="site-header__dropdown-menu site-header__dropdown-menu--right">
+                                @foreach ($recursosSubItems as $sub)
+                                    <a class="site-header__dropdown-link" href="{{ $sub['href'] }}">{{ $sub['label'] }}</a>
+                                @endforeach
+                            </div>
+                        </div>
+                    @else
+                        <a
+                            class="site-header__nav-item {{ !empty($item['pinkBg']) ? 'is-pink' : '' }} {{ !empty($item['active']) ? 'is-active' : '' }} {{ !empty($item['bold']) ? 'is-bold' : '' }}"
+                            href="{{ $item['href'] }}"
+                        >
+                            @if (!empty($item['badge']))
+                                <span class="site-header__badge {{ $item['badge'] === 'Gratis' ? 'is-free' : '' }}">{{ $item['badge'] }}</span>
+                            @endif
+                            <span>{{ $item['label'] }}</span>
+                        </a>
+                    @endif
                 @endforeach
             </nav>
         </div>
     </div>
 
     <div class="site-header__mobile container">
-        <button class="site-header__hamburger js-open-menu" type="button" aria-label="Abrir menú">
+        <button aria-label="Abrir menú" class="site-header__hamburger js-open-menu" type="button">
             <span></span><span></span><span></span>
         </button>
-        <a class="site-header__brand" href="{{ route('catalog.index') }}">
-            <img alt="ADIPA Colombia" src="{{ asset('assets/logo-colombia.webp') }}">
+        <a class="site-header__brand site-header__brand--mobile" href="https://adipa.co">
+            <img alt="ADIPA" src="{{ asset('assets/logo-colombia.webp') }}">
         </a>
         <div class="site-header__mobile-actions">
-            <button class="site-header__search-bubble" type="button" aria-label="Buscar">⌕</button>
-            <button class="site-header__cart-button js-open-cart" type="button" aria-label="Carrito">
+            <button aria-label="Buscar" class="site-header__icon-button site-header__icon-button--mobile" type="button">
+                <img alt="" aria-hidden="true" src="{{ asset('assets/icon-search-menu.png') }}">
+            </button>
+            <button aria-label="Carrito" class="site-header__cart-button site-header__cart-button--mobile js-open-cart" type="button">
                 <img alt="" aria-hidden="true" src="{{ asset('assets/icon-main-cart.png') }}">
-                <span class="site-header__cart-badge js-cart-count {{ $cartSummary['count'] ? '' : 'is-hidden' }}">{{ $cartSummary['count'] }}</span>
+                <span class="site-header__cart-badge site-header__cart-badge--mobile js-cart-count {{ $cartSummary['count'] ? '' : 'is-hidden' }}">{{ $cartSummary['count'] }}</span>
             </button>
         </div>
     </div>
 </header>
 
 <div class="mobile-drawer js-mobile-drawer">
-    <div class="mobile-drawer__rail">
-        <button class="mobile-drawer__hamburger js-close-menu" type="button" aria-label="Cerrar menú"><span></span><span></span><span></span></button>
-        <div class="mobile-drawer__fill"></div>
-    </div>
     <aside class="mobile-drawer__panel" aria-label="Navegación móvil">
         <div class="mobile-drawer__header">
-            <div>
-                <span class="mobile-drawer__eyebrow">Navegacion</span>
-                <a class="mobile-drawer__brand" href="{{ route('catalog.index') }}">
-                    <img alt="ADIPA Colombia" src="{{ asset('assets/logo-colombia.webp') }}">
+            <div class="mobile-drawer__header-row">
+                <button aria-label="Volver" class="mobile-drawer__back js-mobile-menu-back is-hidden" type="button">
+                    <span>‹</span>
+                    <span>Volver</span>
+                </button>
+                <a class="mobile-drawer__brand js-mobile-menu-brand" href="https://adipa.co">
+                    <img alt="ADIPA" src="{{ asset('assets/logo-colombia.webp') }}">
                 </a>
+                <button aria-label="Cerrar menú" class="mobile-drawer__close js-close-menu" type="button">×</button>
             </div>
-            <button class="mobile-drawer__close js-close-menu" type="button" aria-label="Cerrar menú">×</button>
         </div>
 
         <div class="mobile-drawer__nav-shell">
-            <nav class="mobile-drawer__nav">
-                @foreach ($headerNav as $item)
-                    <a class="mobile-drawer__item" href="{{ route('catalog.index') }}">
-                        <span class="{{ !empty($item['bold']) ? 'is-strong' : '' }}">{{ $item['label'] }}</span>
-                        <span class="mobile-drawer__item-meta">
+            <nav class="mobile-drawer__nav js-mobile-menu-view" data-view="main">
+                @foreach ($headerNavMobile as $item)
+                    @if ($item['label'] === 'Recursos')
+                        <button class="mobile-drawer__item js-mobile-menu-trigger" data-target="recursos" type="button">
+                            <span class="{{ !empty($item['bold']) ? 'is-strong' : '' }}">{{ $item['label'] }}</span>
+                            <span class="mobile-drawer__item-meta"><span class="mobile-drawer__item-chevron">›</span></span>
+                        </button>
+                    @else
+                        <a class="mobile-drawer__item {{ !empty($item['pinkBg']) ? 'is-pink' : '' }}" href="{{ $item['href'] }}">
+                            <span class="{{ !empty($item['bold']) ? 'is-strong' : '' }}">{{ $item['label'] }}</span>
                             @if (!empty($item['badge']))
-                                <span class="mobile-drawer__badge {{ $item['badge'] === 'Gratis' ? 'is-free' : '' }}">{{ $item['badge'] }}</span>
+                                <span class="mobile-drawer__item-meta">
+                                    <span class="mobile-drawer__badge {{ $item['badge'] === 'Gratis' ? 'is-free' : '' }}">{{ $item['badge'] }}</span>
+                                </span>
                             @endif
-                            @if (!empty($item['chevron']))<span class="mobile-drawer__item-chevron">›</span>@endif
-                        </span>
-                    </a>
+                        </a>
+                    @endif
                 @endforeach
-                <button class="mobile-drawer__item" type="button">
+                <button class="mobile-drawer__item js-mobile-menu-trigger" data-target="descubre" type="button">
                     <span>Descubre ADIPA</span>
                     <span class="mobile-drawer__item-meta"><span class="mobile-drawer__item-chevron">›</span></span>
                 </button>
             </nav>
+
+            <nav class="mobile-drawer__nav js-mobile-menu-view is-hidden" data-view="recursos">
+                <div class="mobile-drawer__section-label">Recursos</div>
+                @foreach ($recursosSubItems as $sub)
+                    <a class="mobile-drawer__subitem" href="{{ $sub['href'] }}">{{ $sub['label'] }}</a>
+                @endforeach
+            </nav>
+
+            <nav class="mobile-drawer__nav js-mobile-menu-view is-hidden" data-view="descubre">
+                <div class="mobile-drawer__section-label">Descubre ADIPA</div>
+                @foreach ($descubreAdipaItems as $item)
+                    @if (!empty($item['children']))
+                        <button class="mobile-drawer__item js-mobile-menu-trigger" data-target="descubre-{{ \Illuminate\Support\Str::slug($item['label']) }}" type="button">
+                            <span>{{ $item['label'] }}</span>
+                            <span class="mobile-drawer__item-meta"><span class="mobile-drawer__item-chevron">›</span></span>
+                        </button>
+                    @else
+                        <a class="mobile-drawer__subitem" href="{{ $item['href'] }}">{{ $item['label'] }}</a>
+                    @endif
+                @endforeach
+            </nav>
+
+            @foreach ($descubreAdipaItems as $item)
+                @if (!empty($item['children']))
+                    <nav class="mobile-drawer__nav js-mobile-menu-view is-hidden" data-view="descubre-{{ \Illuminate\Support\Str::slug($item['label']) }}">
+                        <div class="mobile-drawer__section-label">{{ $item['label'] }}</div>
+                        @foreach ($item['children'] as $child)
+                            <a class="mobile-drawer__subitem" href="{{ $child['href'] }}">{{ $child['label'] }}</a>
+                        @endforeach
+                    </nav>
+                @endif
+            @endforeach
         </div>
 
         <div class="mobile-drawer__footer">
             <div class="mobile-drawer__auth">
-                <button class="mobile-drawer__login" type="button">Iniciar Sesion</button>
-                <button class="mobile-drawer__register" type="button">Registrate</button>
+                <a class="mobile-drawer__login" href="https://adipa.co/sesion/" rel="nofollow">Iniciar Sesión</a>
+                <a class="mobile-drawer__register" href="https://adipa.co/registro/" rel="nofollow">¡Regístrate!</a>
             </div>
             <div class="mobile-drawer__contact">
                 <div class="mobile-drawer__contact-copy">
-                    <span>Contacto rapido</span>
-                    <strong>Escribenos por WhatsApp</strong>
+                    <span>Contacto rápido</span>
+                    <strong>Escríbenos por WhatsApp</strong>
                 </div>
-                <button class="mobile-drawer__whatsapp" type="button" aria-label="WhatsApp">
+                <a
+                    aria-label="WhatsApp"
+                    class="mobile-drawer__whatsapp"
+                    href="https://api.whatsapp.com/send?phone=+573144718655&text=Hola, me quiero contactar desde ADIPA"
+                    rel="nofollow noreferrer"
+                    target="_blank"
+                >
                     <img alt="" aria-hidden="true" src="{{ asset('assets/icons-whatsapp.svg') }}">
-                </button>
+                </a>
             </div>
         </div>
     </aside>

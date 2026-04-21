@@ -22,6 +22,14 @@ npm install
 npm run dev
 ```
 
+`npm run dev` usa Webpack para un entorno de desarrollo más estable en este workspace.
+
+Si quieres probar Turbopack de forma explícita:
+
+```bash
+npm run dev:turbo
+```
+
 ## Rutas
 
 - `/`: catálogo

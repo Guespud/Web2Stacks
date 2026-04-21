@@ -22,9 +22,24 @@ class CatalogRepository
         return $this->data('filter_groups');
     }
 
-    public function headerNav(): array
+    public function headerNavDesktop(): array
     {
-        return $this->data('header_nav');
+        return $this->data('header_nav_desktop');
+    }
+
+    public function headerNavMobile(): array
+    {
+        return $this->data('header_nav_mobile');
+    }
+
+    public function recursosSubItems(): array
+    {
+        return $this->data('recursos_sub_items');
+    }
+
+    public function descubreAdipaItems(): array
+    {
+        return $this->data('descubre_adipa_items');
     }
 
     public function footer(): array

@@ -8,11 +8,13 @@ export type FooterLinkGroup = {
   title: string;
 };
 
-export const footerCountries: FooterLink[] = [
-  { href: "https://adipa.cl/", label: "Chile" },
-  { href: "https://adipa.co/", label: "Colombia" },
-  { href: "https://adipa.mx/", label: "México" },
-  { href: "https://adipa.co/", label: "Global" },
+export type FooterCountry = FooterLink & { flag: string };
+
+export const footerCountries: FooterCountry[] = [
+  { href: "https://adipa.cl/", label: "Chile", flag: "🇨🇱" },
+  { href: "https://adipa.co/", label: "Colombia", flag: "🇨🇴" },
+  { href: "https://adipa.mx/", label: "México", flag: "🇲🇽" },
+  { href: "https://adipa.co/", label: "Global", flag: "🌐" },
 ];
 
 export const footerLinkGroups: FooterLinkGroup[] = [

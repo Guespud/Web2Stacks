@@ -320,17 +320,17 @@ export function CourseFilters({
           <h3 className="text-[15px] font-medium text-[#a1a1b6]">Filtros</h3>
         </div>
 
-        <div className="space-y-0.5">
+        <div className="space-y-0">
           {sections.map((section) => {
             const isOpen = openSections.includes(section.key);
 
             return (
               <section
                 key={section.key}
-                className="border-b border-[#f1eff7] py-1 last:border-b-0"
+                className="border-b border-[#f1eff7] pt-1 pb-[5px] last:border-b-0"
               >
                 <button
-                  className={`flex w-full items-center justify-between py-4 text-left text-[16px] font-extrabold ${
+                  className={`flex w-full items-center justify-between pt-4 pb-[17px] text-left text-[16px] font-extrabold ${
                     isOpen ? "text-[#6d44f7]" : "text-[#261f53]"
                   }`}
                   onClick={() => onToggleAccordion(section.key)}

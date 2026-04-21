@@ -9,18 +9,12 @@ function SearchIcon() {
   return (
     <svg
       aria-hidden="true"
-      fill="none"
-      height="30"
-      viewBox="0 0 24 24"
-      width="30"
+      fill="currentColor"
+      height="16"
+      viewBox="0 0 20 20"
+      width="16"
     >
-      <path
-        d="M21 21l-4.35-4.35M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="2.8"
-      />
+      <path d="M8.5 2a6.5 6.5 0 1 1 0 13 6.5 6.5 0 0 1 0-13Zm0-2a8.5 8.5 0 1 0 5.33 15.12l4.02 4.02a1 1 0 0 0 1.42-1.42l-4.02-4.02A8.5 8.5 0 0 0 8.5 0Z" />
     </svg>
   );
 }
@@ -34,47 +28,64 @@ export function CatalogHero({
   return (
     <section className="relative isolate overflow-hidden bg-[linear-gradient(90deg,#6843f7_0%,#744cff_48%,#6f47fb_100%)]">
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.08)_0%,rgba(255,255,255,0.02)_100%)]" />
-        <div className="absolute left-[4.8%] top-[50.5%] h-[220px] w-[380px] bg-white/8 [clip-path:polygon(17%_0,81%_0,95%_66%,48%_66%,41%_100%,0_100%,0_78%)]" />
-        <div className="absolute left-[26.2%] top-[-12%] h-[162%] w-[124px] -skew-x-[19deg] bg-white/10" />
-        <div className="absolute left-[34.8%] top-[-14%] h-[168%] w-[86px] -skew-x-[19deg] bg-white/7" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.05)_0%,rgba(255,255,255,0.02)_100%)]" />
       </div>
 
-      <div className="relative mx-auto flex w-full max-w-[1280px] flex-col items-center px-4 py-14 text-center text-white xl:px-6 xl:py-20">
-        <h1 className="max-w-4xl text-[30px] font-extrabold leading-[1.08] tracking-[-0.03em] md:text-[44px]">
-          Cursos de Psicología con Certificado en 2026
-        </h1>
-        <p className="mt-5 max-w-[34rem] text-[15px] leading-7 font-normal text-white/90 md:text-[17px]">
-          Vive la mejor experiencia de aprendizaje y potencia tus conocimientos a
-          través de nuestros cursos y diplomados
-        </p>
+      <div className="relative mx-auto w-full max-w-[1400px] px-5 py-10 text-center text-white md:px-10 md:py-16">
+        <div className="mx-auto max-w-[1120px]">
+          <div className="mx-auto max-w-[1120px]">
+            <h1 className="mx-auto max-w-none text-[36px] font-semibold leading-[48px] text-white md:text-[38px] md:leading-[48px]">
+              Cursos de Psicología con Certificado en 2026
+            </h1>
+            <p className="mx-auto mt-5 max-w-[760px] text-[14px] font-normal leading-[26px] text-white/88 md:text-[14px]">
+              Vive la mejor experiencia de aprendizaje y potencia tus conocimientos a
+              través de nuestros cursos y diplomados
+            </p>
+          </div>
 
-        <div className="mt-8 flex w-full max-w-[640px] items-center border-b border-white/75 px-0 pb-2">
-          <input
-            aria-label="Buscar por temática"
-            className="h-10 w-full bg-transparent text-[16px] font-black leading-none tracking-[-0.035em] text-white antialiased outline-none placeholder:text-white/0 md:text-[18px]"
-            onChange={(event) => onSearchChange?.(event.target.value)}
-            placeholder="Buscar"
-            value={searchValue}
-            type="search"
-          />
-          <span className="pb-1 text-white">
-            <SearchIcon />
-          </span>
-        </div>
-
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-2.5 text-[13px] text-white/95 md:gap-3 md:text-[14px]">
-          <span className="font-medium">Buscar:</span>
-          {tags.map((tag) => (
-            <button
-              key={tag}
-              className="rounded-[8px] border border-white/80 bg-white/8 px-3.5 py-1.5 text-[12px] font-medium text-white transition hover:bg-white/14 md:px-4 md:text-[13px]"
-              onClick={() => onTagSelect?.(tag)}
-              type="button"
+          <div className="mx-auto mt-10 w-full max-w-[620px]">
+            <form
+              className="w-full"
+              onSubmit={(event) => event.preventDefault()}
             >
-              {tag}
-            </button>
-          ))}
+              <div className="w-full border-b border-white/75 pb-2">
+                <div className="flex min-h-[44px] items-center">
+                  <span
+                    aria-hidden="true"
+                    className="mr-2 inline-block h-[25px] w-[2px] animate-[hero-caret-blink_1s_infinite] rounded-full bg-white"
+                  />
+                  <input
+                    aria-label="Buscar por temática"
+                    autoComplete="off"
+                    className="w-full border-0 bg-transparent px-2 pr-12 text-[24px] font-bold leading-none text-white outline-none placeholder:text-white/0"
+                    onChange={(event) => onSearchChange?.(event.target.value)}
+                    placeholder="Buscar"
+                    type="search"
+                    value={searchValue}
+                  />
+                  <span className="shrink-0 px-[15px] text-white">
+                    <SearchIcon />
+                  </span>
+                </div>
+              </div>
+
+              <div className="mt-9 flex flex-wrap items-center justify-center gap-x-[10px] gap-y-[8px] text-[14px] text-white/95">
+                <p className="mb-0 text-white">Buscar:</p>
+                <div className="flex flex-wrap items-center justify-center">
+                  {tags.map((tag) => (
+                    <button
+                      key={tag}
+                      className="mx-[5px] mb-[5px] inline-block rounded-[7px] border border-white bg-white/30 px-[10px] text-[13px] font-medium leading-[26px] text-white transition hover:bg-white/40"
+                      onClick={() => onTagSelect?.(tag)}
+                      type="button"
+                    >
+                      <span>{tag}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </section>

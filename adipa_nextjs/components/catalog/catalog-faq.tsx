@@ -120,7 +120,7 @@ export function CatalogFaq() {
               }`}
             >
               <button
-                className="flex w-full items-center justify-between gap-4 px-5 py-5 text-left md:gap-6 md:px-8 md:py-7"
+                className="flex w-full items-center justify-between gap-4 px-5 py-4.5 text-left md:gap-6 md:px-8 md:py-6"
                 onClick={() => setOpenIndex(isOpen ? null : index)}
                 type="button"
               >
@@ -128,18 +128,30 @@ export function CatalogFaq() {
                   {item.question}
                 </span>
                 <span
-                  className={`flex size-9 shrink-0 items-center justify-center rounded-full border text-[22px] font-light transition md:size-10 md:text-[24px] ${
+                  className={`flex size-8 shrink-0 items-center justify-center rounded-full border transition md:size-9 ${
                     isOpen
-                      ? "border-[#6d44f7] bg-[#6d44f7] text-white"
-                      : "border-[#d9cffd] text-[#6d44f7]"
+                      ? "border-[#cfc2ff] bg-[#f6f1ff] text-[#6d44f7]"
+                      : "border-[#ddd3ff] bg-white text-[#8f74ff]"
                   }`}
                 >
-                  {isOpen ? "−" : "+"}
+                  <svg
+                    aria-hidden="true"
+                    className={`size-[14px] transition-transform duration-200 ${isOpen ? "rotate-45" : ""}`}
+                    fill="none"
+                    viewBox="0 0 14 14"
+                  >
+                    <path
+                      d="M7 2.25v9.5M2.25 7h9.5"
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeWidth="1.6"
+                    />
+                  </svg>
                 </span>
               </button>
 
               {isOpen ? (
-                <div className="border-t border-[#ece6ff] px-5 pb-5 pt-5 md:px-8 md:pb-7 md:pt-6">
+                <div className="border-t border-[#ece6ff] px-5 pb-4.5 pt-4.5 md:px-8 md:pb-6 md:pt-5">
                   <div className="max-w-5xl text-[14px] leading-7 text-[#6f6a89] md:text-[16px] md:leading-8">
                     {item.answer}
                   </div>

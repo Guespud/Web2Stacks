@@ -13,169 +13,173 @@
   pointer-events auto
 
 .mobile-drawer
-  background rgba(47,47,47,.9)
-
-.mobile-drawer__rail
-  position absolute
-  top 0
-  left 0
-  width 42px
-  height 100%
-  background #9a9a9a
-  display flex
-  flex-direction column
-  align-items center
-  overflow hidden
-
-.mobile-drawer__hamburger,
-.mobile-drawer__close
-  border 0
-  background transparent
-  color #5d3df1
-  cursor pointer
-
-.mobile-drawer__hamburger
-  width 42px
-  height 60px
-  display flex
-  flex-direction column
-  justify-content center
-  align-items center
-
-.mobile-drawer__hamburger span
-  display block
-  width 20px
-  height 2.5px
-  background currentColor
-  border-radius 999px
-  margin-bottom 3px
-
-.mobile-drawer__hamburger span:last-child
-  margin-bottom 0
-
-.mobile-drawer__fill
-  width 100%
-  flex 1
-  background linear-gradient(180deg,#4d34b8 0%,#3d2697 100%)
+  background rgba(23,20,42,.44)
 
 .mobile-drawer__panel
   position absolute
   top 0
-  left 72px
-  width 320px
-  max-width calc(100vw - 72px)
-  height 100vh
+  left 0
+  width 330px
+  max-width 82vw
+  height 100%
   display flex
   flex-direction column
   background white
-  box-shadow 18px 0 40px rgba(0,0,0,.14)
+  border-right 1px solid #ece9f5
+  box-shadow 12px 0 30px rgba(17,11,43,.18)
   overflow hidden
+  transform translateX(-100%)
+  transition transform .3s ease-out
+
+.mobile-drawer.is-open .mobile-drawer__panel
+  transform translateX(0)
 
 .mobile-drawer__header
   position relative
+  border-bottom 1px solid #ece9f5
+  background white
+  padding 16px 20px
+
+.mobile-drawer__header-row
   display flex
-  align-items flex-start
+  align-items center
   justify-content space-between
   gap 16px
-  padding 18px 12px 14px
-  border-bottom 1px solid $border
-
-.mobile-drawer__eyebrow
-  display block
-  margin-bottom 8px
-  color #8b86a6
-  font-size 11px
-  font-weight 800
-  text-transform uppercase
-  letter-spacing .18em
-  line-height 1
 
 .mobile-drawer__brand
   display inline-flex
   align-items center
 
 .mobile-drawer__brand img
-  width 136px
+  width 120px
 
 .mobile-drawer__close
-  width 38px
-  height 38px
-  min-width 38px
-  border 1px solid #ddd6fb
-  border-radius 999px
-  color #7652ff
-  font-size 28px
-  font-weight 300
-  line-height 1
   display inline-flex
+  width 40px
+  height 40px
+  min-width 40px
   align-items center
   justify-content center
+  border 1px solid #e7e1fb
+  border-radius 999px
+  background white
+  color #7652ff
+  font-size 26px
+  font-weight 300
+  line-height 1
+  cursor pointer
+
+.mobile-drawer__back
+  display inline-flex
+  align-items center
+  gap 4px
+  border 0
+  background transparent
+  color #6d44f7
+  font-size 13px
+  font-weight 600
+  cursor pointer
+
+.mobile-drawer__back span:first-child
+  font-size 18px
+  font-weight 300
 
 .mobile-drawer__nav-shell
   flex 1
   min-height 0
-  padding 14px 12px 0
+  padding 16px 20px 20px
   overflow-y auto
 
 .mobile-drawer__nav
-  border 1px solid #e6e2f7
-  border-radius 16px
   overflow hidden
+  border 1px solid #ece9f5
+  border-radius 16px
   background white
 
 .mobile-drawer__item
   width 100%
-  min-height 64px
+  min-height 56px
   display flex
   align-items center
   justify-content space-between
-  gap 10px
-  padding 0 14px
+  gap 16px
+  padding 12px 16px
   border 0
-  border-bottom 1px solid $border
+  border-bottom 1px solid #ece9f5
   background white
-  color $ink
-  font-size 15px
+  color #27223f
+  font-size 18px
   text-align left
+  transition background-color .18s ease
 
 .mobile-drawer__item:last-child
   border-bottom 0
 
 .mobile-drawer__item .is-strong,
 .mobile-drawer__item > span:first-child
-  font-weight 800
+  font-weight 600
   line-height 1.15
+
+.mobile-drawer__item .is-strong
+  font-weight 800
+
+.mobile-drawer__item.is-pink
+  background #fff5f8
+
+.mobile-drawer__item:hover,
+.mobile-drawer__subitem:hover
+  background #faf8ff
 
 .mobile-drawer__item-meta
   display inline-flex
   align-items center
   gap 10px
-  color #b0acc5
+  color #9a96b0
 
 .mobile-drawer__item-chevron
   font-size 22px
   line-height 1
 
+.mobile-drawer__section-label
+  border-bottom 1px solid #ece9f5
+  padding 12px 16px
+  color #9a94ba
+  font-size 12px
+  font-weight 800
+  letter-spacing .12em
+  text-transform uppercase
+
+.mobile-drawer__subitem
+  display flex
+  min-height 52px
+  align-items center
+  padding 12px 16px
+  border-bottom 1px solid #ece9f5
+  color #27223f
+  font-size 16px
+  font-weight 600
+
+.mobile-drawer__subitem:last-child
+  border-bottom 0
+
 .mobile-drawer__badge
   display inline-flex
   align-items center
   justify-content center
-  min-width 64px
-  height 24px
-  padding 0 10px
+  padding 4px 10px
   border-radius 999px
-  background #ff4b92
+  background #ff2f7d
   color white
   font-size 10px
   font-weight 800
   text-transform uppercase
-  letter-spacing .06em
+  letter-spacing .08em
 
 .mobile-drawer__badge.is-free
-  background $brand
+  background #6d44f7
 
 .mobile-drawer__footer
-  padding 12px 12px 14px
+  padding 16px 20px 20px
   border-top 1px solid #ece9f5
   background white
 
@@ -189,23 +193,26 @@
 .mobile-drawer__register
   width 100%
   min-width 0
-  height 42px
-  border-radius 14px
-  font-size 13px
-  font-weight 700
+  height 44px
+  border-radius 10px
+  font-size 14px
+  font-weight 600
   white-space nowrap
-  padding 0 12px
+  padding 0 16px
+  display flex
+  align-items center
+  justify-content center
 
 .mobile-drawer__login
   border 0
-  background linear-gradient(90deg,#6d44f7 0%,#7a52ff 100%)
+  background #6d44f7
   color white
-  box-shadow 0 14px 26px rgba(109,68,247,.24)
+  box-shadow 0 10px 20px rgba(109,68,247,.18)
 
 .mobile-drawer__register
-  border 1px solid #dcd4fb
-  background white
-  color $brand
+  border 1px solid #ddd4ff
+  background #faf8ff
+  color #6d44f7
 
 .mobile-drawer__contact
   margin-top 14px
@@ -213,9 +220,9 @@
   align-items center
   justify-content space-between
   gap 12px
-  border 1px solid #e7e3f7
-  border-radius 16px
-  background #fbfaff
+  border 1px solid #ece9f5
+  border-radius 12px
+  background #fcfbff
   padding 12px 16px
 
 .mobile-drawer__contact-copy span
@@ -229,15 +236,16 @@
 
 .mobile-drawer__contact-copy strong
   display block
-  color #27223f
+  margin-top 4px
+  color #2c2844
   font-size 14px
   font-weight 700
   line-height 1.2
 
 .mobile-drawer__whatsapp
-  width 42px
-  height 42px
-  min-width 42px
+  width 44px
+  height 44px
+  min-width 44px
   border 0
   border-radius 50%
   background #3cc54a
@@ -247,7 +255,7 @@
   box-shadow 0 10px 20px rgba(60,197,74,.22)
 
 .mobile-drawer__whatsapp img
-  width 20px
+  width 24px
 
 .cart-drawer
   background rgba(47,47,47,.45)
@@ -416,24 +424,18 @@
   opacity .55
 
 @media (max-width: 420px)
-  .mobile-drawer__rail
-    width 56px
-
   .mobile-drawer__panel
-    left 56px
-    width calc(100vw - 56px)
-    max-width calc(100vw - 56px)
-    height 100vh
+    width calc(100vw - 18vw)
+    max-width calc(100vw - 18vw)
 
   .mobile-drawer__header
-    padding 18px 14px 12px
+    padding 16px
 
   .mobile-drawer__nav-shell,
   .mobile-drawer__footer
-    padding-left 14px
-    padding-right 14px
+    padding-left 16px
+    padding-right 16px
 
   .mobile-drawer__item
-    min-height 64px
-    font-size 15px
-
+    min-height 56px
+    font-size 18px

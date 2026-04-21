@@ -5,7 +5,6 @@ import { useDeferredValue, useMemo, useState } from "react";
 import { CatalogCta } from "@/components/catalog/catalog-cta";
 import { CatalogFooter } from "@/components/catalog/catalog-footer";
 import { CatalogFaq } from "@/components/catalog/catalog-faq";
-import { ContactForm } from "@/components/catalog/contact-form";
 import { CatalogHero } from "@/components/catalog/catalog-hero";
 import { CatalogSuggestionBanner } from "@/components/catalog/catalog-suggestion-banner";
 import { CourseFilters } from "@/components/catalog/course-filters";
@@ -81,7 +80,6 @@ export function CatalogPageClient({
       <CatalogCta />
       <CatalogSuggestionBanner />
       <CatalogFaq />
-      <ContactForm />
       <CatalogFooter />
     </>
   );

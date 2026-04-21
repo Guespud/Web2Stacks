@@ -7,7 +7,7 @@ import { HeaderDesktop } from "@/components/catalog/header-desktop";
 import { HeaderMobile } from "@/components/catalog/header-mobile";
 import { MobileMenuDrawer } from "@/components/catalog/mobile-menu-drawer";
 import { useCartStore } from "@/lib/cart-store";
-import { headerNavItems } from "@/lib/header-navigation";
+import { desktopNavItems, mobileNavItems } from "@/lib/header-navigation";
 
 export function CatalogHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -25,10 +25,9 @@ export function CatalogHeader() {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-40 border-b border-[#6d44f7] bg-white">
-        <div className="h-[4px] bg-[#1b1b1b]" />
+      <header className="fixed inset-x-0 top-0 z-40 border-b border-[#e8e2f8] bg-white shadow-sm">
         <HeaderDesktop
-          navItems={headerNavItems}
+          navItems={desktopNavItems}
           onOpenCart={openCart}
           totalItems={totalItems}
         />
@@ -39,7 +38,7 @@ export function CatalogHeader() {
         />
       </header>
       <MobileMenuDrawer
-        navItems={headerNavItems}
+        navItems={mobileNavItems}
         onClose={() => setIsMenuOpen(false)}
         open={isMenuOpen}
       />

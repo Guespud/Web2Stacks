@@ -198,15 +198,29 @@ export function bootCatalogPage(app) {
     }
 
     function openMenu() {
+        resetMobileMenu();
         $('.js-mobile-drawer').addClass('is-open');
         $('body').addClass('is-locked');
     }
 
     function closeMenu() {
+        resetMobileMenu();
         $('.js-mobile-drawer').removeClass('is-open');
         if (!$('.js-cart-drawer').hasClass('is-open')) {
             $('body').removeClass('is-locked');
         }
+    }
+
+    function showMobileMenuView(view) {
+        $('.js-mobile-menu-view').addClass('is-hidden');
+        $(`.js-mobile-menu-view[data-view="${view}"]`).removeClass('is-hidden');
+        $('.js-mobile-menu-back').toggleClass('is-hidden', view === 'main');
+        $('.js-mobile-menu-brand').toggleClass('is-hidden', view !== 'main');
+        $('.js-mobile-drawer').attr('data-view', view);
+    }
+
+    function resetMobileMenu() {
+        showMobileMenuView('main');
     }
 
     function resetFilters() {
@@ -256,6 +270,19 @@ export function bootCatalogPage(app) {
             })
             .on('click', '.js-mobile-drawer', function handleMenuOverlay(event) {
                 if (event.target === this) closeMenu();
+            })
+            .on('click', '.js-mobile-menu-trigger', function handleMobileMenuTrigger() {
+                showMobileMenuView(String($(this).data('target') || 'main'));
+            })
+            .on('click', '.js-mobile-menu-back', function handleMobileMenuBack() {
+                const currentView = String($('.js-mobile-drawer').attr('data-view') || 'main');
+
+                if (currentView.startsWith('descubre-')) {
+                    showMobileMenuView('descubre');
+                    return;
+                }
+
+                showMobileMenuView('main');
             })
             .on('click', '.js-add-to-cart', function handleAddToCart() {
                 $.ajax({
@@ -331,16 +358,16 @@ export function bootCatalogPage(app) {
             .on('click', '.js-faq-toggle', function handleFaqToggle() {
                 const item = $(this).closest('.faq-item');
                 const body = item.find('.faq-item__body');
-                const icon = $(this).find('span:last');
+                const icon = $(this).find('.faq-item__icon');
                 const isOpen = item.hasClass('is-open');
 
                 $('.faq-item').removeClass('is-open').find('.faq-item__body').slideUp(180);
-                $('.faq-item .js-faq-toggle span:last').text('+');
+                $('.faq-item .faq-item__icon').removeClass('is-open');
 
                 if (!isOpen) {
                     item.addClass('is-open');
                     body.slideDown(180);
-                    icon.text('−');
+                    icon.addClass('is-open');
                 }
             });
     }

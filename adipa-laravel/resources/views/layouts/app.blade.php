@@ -9,7 +9,13 @@
     @stack('head')
 </head>
 <body class="app-shell {{ $bodyClass ?? '' }}">
-    @include('partials.header', ['headerNav' => $headerNav, 'cartSummary' => $cartSummary])
+    @include('partials.header', [
+        'headerNavDesktop' => $headerNavDesktop,
+        'headerNavMobile' => $headerNavMobile,
+        'recursosSubItems' => $recursosSubItems,
+        'descubreAdipaItems' => $descubreAdipaItems,
+        'cartSummary' => $cartSummary,
+    ])
 
     <main class="app-main">
         @yield('content')
